@@ -186,6 +186,7 @@ Default modes are in `modes/` (English). Additional language-specific modes are 
 
 - **German (DACH market):** `modes/de/` — native German translations with DACH-specific vocabulary (13. Monatsgehalt, Probezeit, Kündigungsfrist, AGG, Tarifvertrag, etc.). Includes `_shared.md`, `angebot.md` (evaluation), `bewerben.md` (apply), `pipeline.md`.
 - **French (Francophone market):** `modes/fr/` — native French translations with France/Belgium/Switzerland/Luxembourg-specific vocabulary (CDI/CDD, convention collective SYNTEC, RTT, mutuelle, prévoyance, 13e mois, intéressement/participation, titres-restaurant, CSE, portage salarial, etc.). Includes `_shared.md`, `offre.md` (evaluation), `postuler.md` (apply), `pipeline.md`.
+- **Russian (Russian market):** `modes/ru/` — native Russian translations with Russian market-specific vocabulary (КТК/ГПХ/ИП contract types, белая/серая зарплата, ДМС, испытательный срок 3 months, IT-аккредитация Минцифры, gross/net НДФЛ 13%). Includes `_shared.md`, `vakansiya.md` (evaluation), `otliknutsya.md` (apply), `pipeline.md`.
 
 **When to use German modes:** If the user is targeting German-language job postings, lives in DACH, or asks for German output. Either:
 1. User says "use German modes" → read from `modes/de/` instead of `modes/`
@@ -197,7 +198,12 @@ Default modes are in `modes/` (English). Additional language-specific modes are 
 2. User sets `language.modes_dir: modes/fr` in `config/profile.yml` → always use French modes
 3. You detect a French JD → suggest switching to French modes
 
-**When NOT to:** If the user applies to English-language roles, even at French or German companies, use the default English modes.
+**When to use Russian modes:** If the user is targeting Russian-language job postings, lives in Russia or CIS, or asks for Russian output. Either:
+1. User says "use Russian modes" → read from `modes/ru/` instead of `modes/`
+2. User sets `language.modes_dir: modes/ru` in `config/profile.yml` → always use Russian modes
+3. You detect a Russian JD → suggest switching to Russian modes
+
+**When NOT to:** If the user applies to English-language roles, even at French, German, or Russian companies, use the default English modes.
 
 ### Skill Modes
 
