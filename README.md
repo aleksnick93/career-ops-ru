@@ -3,7 +3,7 @@
 [Русский](README.md) | [English (original)](https://github.com/santifer/career-ops)
 
 <p align="center">
-  <a href="https://t.me/webchamp_public"><img src="docs/career-ops-ru-banner.png" alt="Career-Ops RU - Мультиагентная AI-система поиска работы" width="800"></a>
+  <a href="https://t.me/webchamp_public"><img src="docs/career-ops-ru-banner.jpg" alt="Career-Ops RU - Мультиагентная AI-система поиска работы" width="800"></a>
 </p>
 
 <p align="center">
