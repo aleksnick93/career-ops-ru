@@ -1,14 +1,47 @@
 cff-version: 1.2.0
-message: "If you use career-ops, please cite it using these metadata."
-title: "Career-Ops: AI-Powered Job Search Pipeline (RU)"
+message: "If you use career-ops-ru, please cite it using these metadata."
+title: "Career-Ops RU: AI-Powered Job Search Pipeline for Russian-Speaking Market"
 type: software
+version: 1.0.0
+date-released: "2026-04-09"
 authors:
-  - family-names: "Fernández de Valderrama, Aleksandr Okhtienko"
-    given-names: "Santiago"
-    website: "https://santifer.io"
-url: "https://santifer.io"
+  - family-names: "Okhtienko"
+    given-names: "Aleksandr"
+    alias: "@webchamp"
+    website: "https://t.me/webchamp"
+    orcid: ""  # опционально — можно удалить эту строку
+
+preferred-citation:
+  type: software
+  title: "Career-Ops RU: AI-Powered Job Search Pipeline for Russian-Speaking Market"
+  authors:
+    - family-names: "Okhtienko"
+      given-names: "Aleksandr"
+  url: "https://github.com/aleksnick93/career-ops-ru"
+  year: 2026
+
+abstract: >
+  Career-Ops RU is a fork of career-ops by Santiago Fernández de Valderrama,
+  adapted for the Russian-speaking job market. Adds hh.ru, Habr Career and
+  getmatch.ru integrations, Russian-language prompts, RU salary scoring,
+  and n8n automation pipeline for Telegram notifications.
+
+url: "https://github.com/aleksnick93/career-ops-ru"
 repository-code: "https://github.com/aleksnick93/career-ops-ru"
 license: MIT
+
+references:
+  - type: software
+    title: "Career-Ops: AI-Powered Job Search Pipeline"
+    authors:
+      - family-names: "Fernández de Valderrama"
+        given-names: "Santiago"
+        website: "https://santifer.io"
+    url: "https://santifer.io"
+    repository-code: "https://github.com/santifer/career-ops"
+    license: MIT
+    notes: "Original project. This fork extends career-ops for the Russian market."
+
 keywords:
   - ai
   - job-search
@@ -16,4 +49,7 @@ keywords:
   - career
   - automation
   - llmops
-  - go-tui
+  - hh.ru
+  - n8n
+  - russian-market
+  - career-ops-ru
