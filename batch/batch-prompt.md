@@ -117,7 +117,21 @@ Sección de **gaps** con estrategia de mitigación para cada uno:
 
 #### Bloque D — Comp y Demanda
 
-Usar WebSearch para salarios actuales (Glassdoor, Levels.fyi, Blind), reputación comp de la empresa, tendencia demanda. Tabla con datos y fuentes citadas. Si no hay datos, decirlo.
+Usar WebSearch para salarios actuales priorizando fuentes del mercado del JD:
+- **RU (приоритет для RU-вакансий):** HH.ru Аналитика (stats.hh.ru), Habr Career Salaries (career.habr.com/salaries), getmatch.ru, my.habr.salary
+- **CIS:** dev.by rates (BY), rabota.by (BY), hh.kz (KZ), staff.am (AM), jobs.ge (GE), hh.uz (UZ)
+- **International benchmarking (solo para comparación con FAANG o roles globales):** Levels.fyi, Glassdoor, Blind
+
+Para conversión de divisas usar el tipo del banco central correspondiente (CBR RU, НБ РБ BY, НБ РК KZ, etc.), no mayor a 7 días. Fallback: open.er-api.com. Registrar la fecha del tipo de cambio en el report.
+
+Tabla con datos y fuentes citadas. Si no hay datos, decirlo.
+
+**Chequeos obligatorios RU/CIS:**
+- Белая / серая зарплата (признаки серой → red flag `gray_salary`)
+- Gross o net (RU: net = gross × 0.87; CIS: usar `ru_cis_tax.<country>.income_tax_pct` de config/profile.yml)
+- КТК / ГПХ / ИП / Самозанятый (ГПХ на постоянку → red flag `gph_for_permanent`)
+- ДМС incluido y desde cuándo
+- IT-аккредитация Минцифры SOLO si: país=RU + `candidate.gender: male` en profile.yml + `mobilization_aware: true` en _profile.md (si no se cumplen las 3 condiciones, NO mencionar en el report)
 
 Score de comp (1-5): 5=top quartile, 4=above market, 3=median, 2=slightly below, 1=well below.
 

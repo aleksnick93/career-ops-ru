@@ -41,10 +41,26 @@ Para empresas con Greenhouse, la API JSON (`boards-api.greenhouse.io/v1/boards/{
 
 Los `search_queries` con `site:` filters cubren portales de forma transversal (todos los Ashby, todos los Greenhouse, etc.). Útil para descubrir empresas NUEVAS que aún no están en `tracked_companies`, pero los resultados pueden estar desfasados.
 
+### Nivel 4 — hh.ru structured scanner (RU/CIS, opcional)
+
+Para el mercado RU/CIS, `scan-hh.mjs` (ejecutable via `npm run scan:hh` o `node scan-hh.mjs`) proporciona acceso estructurado al portal #1 de RU IT-vacantes. Lee `hh_queries:` de `portals.yml` y aplica el mismo `title_filter`. Escribe resultados a `data/hh-scan-YYYYMMDD.jsonl`.
+
+**Dos modos de operación:**
+- **Playwright (default):** Navega hh.ru vía browser headless — funciona sin credenciales, es el path para el 99% de usuarios. Parsea tarjetas de vacantes usando atributos `data-qa` estables.
+- **API (opt-in):** Solo se activa si `config/profile.yml` tiene `hh_api_token:` con un token válido obtenido de https://dev.hh.ru/admin. Más rápido, devuelve JSON estructurado con `key_skills`. Si el token es inválido/expirado → fail loudly, NO hay fallback silencioso a Playwright.
+
+**Cuándo usar hh.ru scanner en lugar de WebSearch (`site:hh.ru`):**
+- Cuando necesitas salario, experiencia, o skills estructurados (no solo título + snippet)
+- Cuando buscas ofertas muy recientes (< 48h) que Google aún no indexó
+- Para queries de alto volumen donde WebSearch te da solo primeras 10 entradas
+
+**⚠️ Nunca ejecutar `scan-hh.mjs` en paralelo con otros procesos Playwright** — existe una sola instancia del browser.
+
 **Prioridad de ejecución:**
 1. Nivel 1: Playwright → todas las `tracked_companies` con `careers_url`
 2. Nivel 2: API → todas las `tracked_companies` con `api:`
 3. Nivel 3: WebSearch → todos los `search_queries` con `enabled: true`
+4. Nivel 4: hh.ru scanner → manualmente con `npm run scan:hh` (RU/CIS solamente)
 
 Los niveles son aditivos — se ejecutan todos, los resultados se mezclan y deduplicar.
 
